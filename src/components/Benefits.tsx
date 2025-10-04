@@ -33,8 +33,8 @@ export default function Benefits() {
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
           {benefits.map((benefit, index) => (
             <div key={index} className="text-center">
-              <div className="inline-flex items-center justify-center w-16 h-16 bg-orange-100 rounded-full mb-4">
-                <benefit.icon className="w-8 h-8 text-orange-600" />
+              <div className="inline-flex items-center justify-center w-16 h-16 bg-brand-soft rounded-full mb-4">
+                <benefit.icon className="w-8 h-8 text-brand" />
               </div>
               <h3 className="font-semibold text-lg mb-2 text-slate-900">{benefit.title}</h3>
               <p className="text-slate-600 text-sm leading-relaxed">{benefit.description}</p>

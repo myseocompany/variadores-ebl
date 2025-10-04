@@ -34,7 +34,7 @@ export default function Products() {
         <div className="grid md:grid-cols-3 gap-8 mb-12">
           {products.map((product, index) => (
             <div key={index} className="bg-slate-50 rounded-xl p-6 hover:shadow-lg transition-shadow">
-              <div className="inline-flex items-center justify-center w-14 h-14 bg-orange-600 rounded-lg mb-4">
+              <div className="inline-flex items-center justify-center w-14 h-14 bg-brand rounded-lg mb-4">
                 <product.icon className="w-7 h-7 text-white" />
               </div>
               <h3 className="font-bold text-xl mb-3 text-slate-900">{product.name}</h3>
@@ -42,7 +42,7 @@ export default function Products() {
               <ul className="space-y-2">
                 {product.features.map((feature, idx) => (
                   <li key={idx} className="text-sm text-slate-700 flex items-center gap-2">
-                    <span className="w-1.5 h-1.5 bg-orange-600 rounded-full"></span>
+                    <span className="w-1.5 h-1.5 bg-brand rounded-full"></span>
                     {feature}
                   </li>
                 ))}
@@ -53,7 +53,7 @@ export default function Products() {
         <div className="text-center">
           <a
             href="#cotizacion"
-            className="inline-flex items-center gap-2 bg-slate-900 hover:bg-slate-800 text-white font-semibold px-6 py-3 rounded-lg transition-colors"
+            className="inline-flex items-center gap-2 bg-brand-dark hover:bg-brand text-white font-semibold px-6 py-3 rounded-lg transition-colors"
           >
             <FileText size={20} />
             Descargar catálogo PDF

@@ -15,26 +15,26 @@ export default function Footer() {
             <h4 className="font-semibold text-lg mb-4">Contáctanos</h4>
             <div className="space-y-3">
               <div className="flex items-start gap-3">
-                <MapPin className="w-5 h-5 text-orange-500 mt-1 flex-shrink-0" />
+                <MapPin className="w-5 h-5 text-brand mt-1 flex-shrink-0" />
                 <p className="text-slate-300 text-sm">
                   Calle 13 # 34-56, Bogotá D.C., Colombia
                 </p>
               </div>
               <div className="flex items-center gap-3">
-                <Phone className="w-5 h-5 text-orange-500 flex-shrink-0" />
-                <a href="tel:+5716012345" className="text-slate-300 text-sm hover:text-orange-500 transition">
+                <Phone className="w-5 h-5 text-brand flex-shrink-0" />
+                <a href="tel:+5716012345" className="text-slate-300 text-sm hover:text-brand-light transition">
                   +57 (601) 234 5678
                 </a>
               </div>
               <div className="flex items-center gap-3">
-                <MessageCircle className="w-5 h-5 text-orange-500 flex-shrink-0" />
-                <a href="https://wa.me/573001234567" target="_blank" rel="noopener noreferrer" className="text-slate-300 text-sm hover:text-orange-500 transition">
+                <MessageCircle className="w-5 h-5 text-brand flex-shrink-0" />
+                <a href="https://wa.me/573001234567" target="_blank" rel="noopener noreferrer" className="text-slate-300 text-sm hover:text-brand-light transition">
                   WhatsApp: +57 300 123 4567
                 </a>
               </div>
               <div className="flex items-center gap-3">
-                <Mail className="w-5 h-5 text-orange-500 flex-shrink-0" />
-                <a href="mailto:ventas@electricasbogota.com" className="text-slate-300 text-sm hover:text-orange-500 transition">
+                <Mail className="w-5 h-5 text-brand flex-shrink-0" />
+                <a href="mailto:ventas@electricasbogota.com" className="text-slate-300 text-sm hover:text-brand-light transition">
                   ventas@electricasbogota.com
                 </a>
               </div>
