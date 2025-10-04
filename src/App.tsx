@@ -1,3 +1,4 @@
+import HeaderLead from './components/HeaderLead';
 import Hero from './components/Hero';
 import Benefits from './components/Benefits';
 import Trust from './components/Trust';
@@ -9,6 +10,7 @@ import Footer from './components/Footer';
 function App() {
   return (
     <div className="min-h-screen">
+      <HeaderLead />
       <Hero />
       <Benefits />
       <Trust />
