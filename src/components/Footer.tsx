@@ -17,19 +17,19 @@ export default function Footer() {
               <div className="flex items-start gap-3">
                 <MapPin className="w-5 h-5 text-orange-500 mt-1 flex-shrink-0" />
                 <p className="text-slate-300 text-sm">
-                  Calle 13 # 34-56, Bogotá D.C., Colombia
+                  Carrera Cra 12 # 16-73, Bogotá D.C., Colombia
                 </p>
               </div>
               <div className="flex items-center gap-3">
                 <Phone className="w-5 h-5 text-orange-500 flex-shrink-0" />
                 <a href="tel:+5716012345" className="text-slate-300 text-sm hover:text-orange-500 transition">
-                  +57 (601) 234 5678
+                  +57 (601) 336 5411
                 </a>
               </div>
               <div className="flex items-center gap-3">
                 <MessageCircle className="w-5 h-5 text-orange-500 flex-shrink-0" />
-                <a href="https://wa.me/573001234567" target="_blank" rel="noopener noreferrer" className="text-slate-300 text-sm hover:text-orange-500 transition">
-                  WhatsApp: +57 300 123 4567
+                <a href="https://wa.me/573150633121" target="_blank" rel="noopener noreferrer" className="text-slate-300 text-sm hover:text-orange-500 transition">
+                  WhatsApp: +57 315 063 3121
                 </a>
               </div>
               <div className="flex items-center gap-3">
