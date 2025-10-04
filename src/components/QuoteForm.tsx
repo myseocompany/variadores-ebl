@@ -10,11 +10,53 @@ export default function QuoteForm() {
     mensaje: ''
   });
   const [submitted, setSubmitted] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [error, setError] = useState<string | null>(null);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const leadsEndpoint = import.meta.env.VITE_CRM_LEADS_ENDPOINT as string | undefined;
+
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    setSubmitted(true);
-    setTimeout(() => setSubmitted(false), 5000);
+    setError(null);
+
+    if (!leadsEndpoint) {
+      setError(
+        'No se encontró la configuración del endpoint del CRM. Verifica la variable de entorno VITE_CRM_LEADS_ENDPOINT.'
+      );
+      return;
+    }
+
+    setIsSubmitting(true);
+
+    try {
+      const response = await fetch(leadsEndpoint, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          Accept: 'application/json'
+        },
+        body: JSON.stringify({
+          nombre: formData.nombre,
+          empresa: formData.empresa,
+          telefono: formData.telefono,
+          correo: formData.correo,
+          mensaje: formData.mensaje
+        })
+      });
+
+      if (!response.ok) {
+        const errorBody = await response.json().catch(() => ({}));
+        throw new Error(errorBody?.message || 'No fue posible registrar la solicitud en el CRM.');
+      }
+
+      setSubmitted(true);
+      setFormData({ nombre: '', empresa: '', telefono: '', correo: '', mensaje: '' });
+      setTimeout(() => setSubmitted(false), 5000);
+    } catch (err) {
+      setError(err instanceof Error ? err.message : 'Error desconocido al enviar la solicitud.');
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
@@ -43,6 +85,11 @@ export default function QuoteForm() {
           </div>
         ) : (
           <form onSubmit={handleSubmit} className="bg-white rounded-xl p-8 shadow-xl">
+            {error && (
+              <div className="mb-6 rounded-lg border border-red-200 bg-red-50 p-4 text-sm text-red-700">
+                {error}
+              </div>
+            )}
             <div className="grid md:grid-cols-2 gap-6 mb-6">
               <div>
                 <label htmlFor="nombre" className="block text-sm font-medium text-slate-700 mb-2">
@@ -126,10 +173,11 @@ export default function QuoteForm() {
 
             <button
               type="submit"
-              className="w-full bg-orange-600 hover:bg-orange-700 text-white font-semibold px-8 py-4 rounded-lg text-lg transition-colors inline-flex items-center justify-center gap-2"
+              disabled={isSubmitting}
+              className="w-full bg-orange-600 hover:bg-orange-700 disabled:bg-orange-300 disabled:cursor-not-allowed text-white font-semibold px-8 py-4 rounded-lg text-lg transition-colors inline-flex items-center justify-center gap-2"
             >
               <Send size={20} />
-              Quiero mi cotización
+              {isSubmitting ? 'Enviando...' : 'Quiero mi cotización'}
             </button>
 
             <p className="text-xs text-slate-500 mt-4 text-center">
