@@ -17,7 +17,7 @@ export default function Footer() {
               <div className="flex items-start gap-3">
                 <MapPin className="w-5 h-5 text-brand mt-1 flex-shrink-0" />
                 <p className="text-slate-300 text-sm">
-                  Calle 13 # 34-56, Bogotá D.C., Colombia
+                  Carrera Cra 12 # 16-73, Bogotá D.C., Colombia
                 </p>
               </div>
               <div className="flex items-center gap-3">
