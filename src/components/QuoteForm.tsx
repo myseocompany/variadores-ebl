@@ -64,7 +64,7 @@ export default function QuoteForm() {
   };
 
   return (
-    <section id="cotizacion" className="py-16 px-6 bg-gradient-to-br from-slate-900 to-slate-800">
+    <section id="cotizacion" className="py-16 px-6 bg-gradient-to-br from-brand-light to-brand-dark">
       <div className="max-w-4xl mx-auto">
         <div className="text-center mb-10">
           <h2 className="text-3xl font-bold mb-4 text-white">
@@ -102,7 +102,7 @@ export default function QuoteForm() {
                   required
                   value={formData.nombre}
                   onChange={handleChange}
-                  className="w-full px-4 py-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-transparent outline-none transition"
+                  className="w-full px-4 py-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-brand focus:border-transparent outline-none transition"
                   placeholder="Juan Pérez"
                 />
               </div>
@@ -117,7 +117,7 @@ export default function QuoteForm() {
                   required
                   value={formData.empresa}
                   onChange={handleChange}
-                  className="w-full px-4 py-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-transparent outline-none transition"
+                  className="w-full px-4 py-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-brand focus:border-transparent outline-none transition"
                   placeholder="Industrias S.A."
                 />
               </div>
@@ -135,7 +135,7 @@ export default function QuoteForm() {
                   required
                   value={formData.telefono}
                   onChange={handleChange}
-                  className="w-full px-4 py-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-transparent outline-none transition"
+                  className="w-full px-4 py-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-brand focus:border-transparent outline-none transition"
                   placeholder="+57 300 123 4567"
                 />
               </div>
@@ -150,7 +150,7 @@ export default function QuoteForm() {
                   required
                   value={formData.correo}
                   onChange={handleChange}
-                  className="w-full px-4 py-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-transparent outline-none transition"
+                  className="w-full px-4 py-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-brand focus:border-transparent outline-none transition"
                   placeholder="correo@empresa.com"
                 />
               </div>
@@ -166,7 +166,7 @@ export default function QuoteForm() {
                 rows={4}
                 value={formData.mensaje}
                 onChange={handleChange}
-                className="w-full px-4 py-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-transparent outline-none transition resize-none"
+                className="w-full px-4 py-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-brand focus:border-transparent outline-none transition resize-none"
                 placeholder="Potencia del motor, aplicación, cantidad requerida..."
               ></textarea>
             </div>
@@ -174,7 +174,7 @@ export default function QuoteForm() {
             <button
               type="submit"
               disabled={isSubmitting}
-              className="w-full bg-orange-600 hover:bg-orange-700 disabled:bg-orange-300 disabled:cursor-not-allowed text-white font-semibold px-8 py-4 rounded-lg text-lg transition-colors inline-flex items-center justify-center gap-2"
+              className="w-full bg-brand hover:bg-brand-dark disabled:bg-brand/60 disabled:cursor-not-allowed text-white font-semibold px-8 py-4 rounded-lg text-lg transition-colors inline-flex items-center justify-center gap-2"
             >
               <Send size={20} />
               {isSubmitting ? 'Enviando...' : 'Quiero mi cotización'}
