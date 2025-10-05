@@ -61,40 +61,41 @@ export default function HeaderLead() {
   };
 
   return (
-    <header className="border-b border-slate-200">
+    <header className="border-b border-slate-200 relative overflow-hidden">
+      {/* Logo superior */}
       <div className="bg-white">
         <div className="max-w-6xl mx-auto px-6 py-4">
           <img
-            src="https://www.invertekdrives.com/img/common/logos/invertekdrives-sdt-logo.svg"
-            alt="Invertek Drives"
-            className="h-10 w-auto"
+            src="https://www.invertekdrives.com/img/common/logos/optidrive.svg"
+            alt="Optidrive"
+            className="h-14 w-auto mb-4 sm:mb-0"
             loading="lazy"
           />
         </div>
       </div>
 
-      <div className="bg-brand-dark text-white">
-        <div className="max-w-6xl mx-auto px-6 py-10 flex flex-col gap-10 lg:flex-row lg:items-start">
+      {/* Hero principal */}
+      <div className="bg-brand-dark text-white relative">
+
+
+        <div className="max-w-6xl mx-auto px-6 py-10 flex flex-col gap-10 lg:flex-row lg:items-start relative z-10">
+          {/* Texto principal */}
           <div className="flex-1">
-            <div className="flex flex-col sm:flex-row sm:items-center sm:gap-6">
-              <img
-                src="https://www.invertekdrives.com/img/common/logos/optidrive-p2-white.svg"
-                alt="Optidrive P2"
-                className="h-14 w-auto mb-4 sm:mb-0"
-                loading="lazy"
-              />
-              <div>
-                <h1 className="text-3xl font-semibold">Variadores Optidrive P2</h1>
-                <p className="text-slate-200 mt-3 max-w-xl">
-                  Rendimiento premium para aplicaciones industriales exigentes. Integración sencilla, protecciones avanzadas y
-                  soporte certificado en Colombia.
-                </p>
-              </div>
-            </div>
+            <h1 className="text-4xl md:text-5xl font-bold leading-tight mb-6">
+              Variadores de Frecuencia Trifásicos y Monofásicos Invertek Optidrive E3, P2, ECO y Elevator.
+            </h1>
+            <h2 className="text-lg font-medium mb-4 text-brand-soft">
+              Compra tu variador de frecuencia Invertek Optidrive en Colombia
+            </h2>
+            <p className="text-xl text-slate-300 mb-8 max-w-2xl">
+              Control preciso de motores trifásicos y monofásicos. Variadores de frecuencia e inversores Optidrive
+              con eficiencia energética hasta un 30%.
+            </p>
           </div>
 
+          {/* Formulario */}
           <div className="w-full lg:w-[380px]">
-            <div className="bg-white/10 backdrop-blur rounded-2xl p-6 shadow-xl">
+            <div className="bg-white/10 backdrop-blur rounded-2xl p-6 shadow-xl relative z-20">
               {submitted ? (
                 <div className="text-center">
                   <CheckCircle className="w-12 h-12 mx-auto mb-3 text-brand-soft" />
@@ -161,16 +162,11 @@ export default function HeaderLead() {
                   <button
                     type="submit"
                     disabled={isSubmitting}
-                    className="inline-flex w-full items-center justify-center gap-2 rounded-lg bg-brand px-6 py-3 font-semibold text-white transition hover:bg-brand-dark disabled:cursor-not-allowed disabled:bg-brand/60"
+                    className="inline-flex w-full items-center justify-center gap-2 rounded-lg bg-black px-6 py-3 font-semibold text-white transition hover:bg-brand-dark disabled:cursor-not-allowed disabled:bg-brand/60"
                   >
                     <Send size={18} />
-                    {isSubmitting ? 'Enviando...' : 'Quiero asesoría inmediata'}
+                    {isSubmitting ? 'Enviando...' : 'Cotizar variador de frecuencia Invertek'}
                   </button>
-
-                  <p className="text-xs text-slate-300">
-                    También puedes llamarnos al <span className="font-semibold text-white">+57 601 123 4567</span> para
-                    atención inmediata.
-                  </p>
                 </form>
               )}
             </div>

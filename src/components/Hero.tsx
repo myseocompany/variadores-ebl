@@ -9,11 +9,11 @@ export default function Hero() {
     <section className="bg-gradient-to-br from-brand-light to-brand-dark text-white py-20 px-6">
       <div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-12 items-center">
         <div>
-          <h1 className="text-4xl md:text-5xl font-bold leading-tight mb-6">
-            Variadores de Frecuencia Invertek Optidrive
-          </h1>
+          <h1>Variadores de Frecuencia Trifásicos y Monofásicos Invertek Optidrive E3, P2, ECO y Elevator</h1>
+
           <p className="text-xl text-slate-300 mb-8">
-            Control preciso de motores eléctricos con ahorro energético hasta 30%. Soporte técnico certificado en Colombia.
+            Control preciso de motores trifásicos y monofásicos.
+Variadores de frecuencia e inversores Optidrive con eficiencia energética hasta 30%. Soporte técnico certificado en Colombia.
           </p>
           <button
             onClick={scrollToForm}

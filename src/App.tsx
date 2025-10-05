@@ -1,22 +1,24 @@
 import HeaderLead from './components/HeaderLead';
-import Hero from './components/Hero';
+import { ProductBanner } from './components/ProductBanner';
 import Benefits from './components/Benefits';
 import Trust from './components/Trust';
 import Products from './components/Products';
 import QuoteForm from './components/QuoteForm';
-import ValueAdd from './components/ValueAdd';
+
 import Footer from './components/Footer';
+import TrainingGallery from './components/TrainingGallery';
+
 
 function App() {
   return (
     <div className="min-h-screen">
       <HeaderLead />
-      <Hero />
+      <ProductBanner />
       <Benefits />
       <Trust />
       <Products />
       <QuoteForm />
-      <ValueAdd />
+      <TrainingGallery />
       <Footer />
     </div>
   );

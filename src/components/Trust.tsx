@@ -1,33 +1,63 @@
-import { Award, Shield, CheckCircle } from 'lucide-react';
+import { Building2, Wrench, MapPin } from 'lucide-react';
 
-export default function Trust() {
+export default function ValueAdd() {
   return (
-    <section className="py-12 px-6 bg-slate-50">
+    <section className="py-16 px-6 bg-slate-50">
       <div className="max-w-6xl mx-auto">
-        <div className="grid md:grid-cols-3 gap-8 items-center text-center">
-          <div className="flex flex-col items-center">
-            <Award className="w-12 h-12 text-brand mb-3" />
-            <p className="font-semibold text-slate-900">Distribuidor Autorizado</p>
-            <p className="text-sm text-slate-600">Invertek Drives Colombia</p>
+        <h2 className="text-3xl font-bold text-center mb-12 text-slate-900">
+          Eléctricas Bogotá: Tu aliado en automatización industrial
+        </h2>
+
+        <div className="grid lg:grid-cols-2 gap-10 items-center">
+          {/* Video institucional */}
+          <div className="w-full">
+            <div className="aspect-[16/9] max-h-[340px] rounded-xl overflow-hidden shadow-lg">
+              <iframe
+                className="w-full h-full"
+                src="https://www.youtube.com/embed/hhuZ0YVKUJQ?start=119"
+                title="Eléctricas Bogotá - Video institucional"
+                loading="lazy"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowFullScreen
+              ></iframe>
+            </div>
           </div>
-          <div className="flex flex-col items-center">
-            <Shield className="w-12 h-12 text-brand mb-3" />
-            <p className="font-semibold text-slate-900">Certificación RETIE</p>
-            <p className="text-sm text-slate-600">Cumplimiento normativo nacional</p>
+
+          {/* Cards de valor */}
+          <div className="grid sm:grid-cols-2 gap-6">
+            <div className="bg-white rounded-lg p-5 shadow-sm text-left">
+              <Building2 className="w-10 h-10 text-brand mb-3" />
+              <h3 className="font-bold text-base mb-2 text-slate-900">
+                Más de 40 años de experiencia
+              </h3>
+              <p className="text-slate-600 text-sm leading-relaxed">
+                Desde 1980 suministrando soluciones eléctricas e industriales a empresas
+                colombianas. Trayectoria comprobada en el sector.
+              </p>
+            </div>
+
+            <div className="bg-white rounded-lg p-5 shadow-sm text-left">
+              <Wrench className="w-10 h-10 text-brand mb-3" />
+              <h3 className="font-bold text-base mb-2 text-slate-900">
+                Asesoría técnica especializada
+              </h3>
+              <p className="text-slate-600 text-sm leading-relaxed">
+                Ingenieros certificados en automatización y control industrial. Te ayudamos a
+                dimensionar y configurar tu variador de frecuencia.
+              </p>
+            </div>
+
+            <div className="bg-white rounded-lg p-5 shadow-sm text-left sm:col-span-2">
+              <MapPin className="w-10 h-10 text-brand mb-3" />
+              <h3 className="font-bold text-base mb-2 text-slate-900">
+                Envíos a todo Colombia
+              </h3>
+              <p className="text-slate-600 text-sm leading-relaxed">
+                Despachos desde Bogotá con seguimiento en tiempo real. Cobertura nacional
+                garantizada para tu tranquilidad.
+              </p>
+            </div>
           </div>
-          <div className="flex flex-col items-center">
-            <CheckCircle className="w-12 h-12 text-brand mb-3" />
-            <p className="font-semibold text-slate-900">40+ años de experiencia</p>
-            <p className="text-sm text-slate-600">Eléctricas Bogotá Ltda</p>
-          </div>
-        </div>
-        <div className="mt-12 bg-white border-l-4 border-brand p-6 rounded-r-lg shadow-sm">
-          <p className="text-slate-700 italic">
-            "Como distribuidor autorizado de Invertek Drives, garantizamos productos originales, soporte técnico especializado y asesoría en automatización industrial para optimizar sus procesos."
-          </p>
-          <p className="text-sm font-semibold text-slate-900 mt-3">
-            — Ingeniería Eléctricas Bogotá
-          </p>
         </div>
       </div>
     </section>

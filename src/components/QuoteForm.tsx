@@ -174,10 +174,10 @@ export default function QuoteForm() {
             <button
               type="submit"
               disabled={isSubmitting}
-              className="w-full bg-brand hover:bg-brand-dark disabled:bg-brand/60 disabled:cursor-not-allowed text-white font-semibold px-8 py-4 rounded-lg text-lg transition-colors inline-flex items-center justify-center gap-2"
+              className="w-full bg-black hover:bg-brand-dark disabled:bg-brand/60 disabled:cursor-not-allowed text-white font-semibold px-8 py-4 rounded-lg text-lg transition-colors inline-flex items-center justify-center gap-2"
             >
               <Send size={20} />
-              {isSubmitting ? 'Enviando...' : 'Quiero mi cotización'}
+              {isSubmitting ? 'Enviando...' : 'Solicitar precio de variador Optidrive'}
             </button>
 
             <p className="text-xs text-slate-500 mt-4 text-center">

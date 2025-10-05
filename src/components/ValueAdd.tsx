@@ -7,6 +7,8 @@ export default function ValueAdd() {
         <h2 className="text-3xl font-bold text-center mb-12 text-slate-900">
           Eléctricas Bogotá: Tu aliado en automatización industrial
         </h2>
+
+
         <div className="grid md:grid-cols-3 gap-8">
           <div className="bg-white rounded-lg p-6 shadow-sm">
             <Building2 className="w-12 h-12 text-brand mb-4" />
@@ -31,6 +33,10 @@ export default function ValueAdd() {
           </div>
         </div>
       </div>
+
+
+
+
     </section>
   );
 }
