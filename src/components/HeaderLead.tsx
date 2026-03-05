@@ -41,7 +41,8 @@ export default function HeaderLead() {
           nombre: formData.nombre,
           telefono: formData.telefono,
           correo: formData.correo,
-          origen: 'cta_superior'
+          origen: 'cta_superior',
+          source_id: 11
         })
       });
 
@@ -51,8 +52,8 @@ export default function HeaderLead() {
       }
 
       setSubmitted(true);
-      setFormData({ nombre: '', telefono: '', correo: '' });
-      setTimeout(() => setSubmitted(false), 5000);
+      window.location.assign('confirmation');
+      return;
     } catch (err) {
       setError(err instanceof Error ? err.message : 'Error desconocido al enviar la solicitud.');
     } finally {

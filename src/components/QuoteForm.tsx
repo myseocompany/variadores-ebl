@@ -40,7 +40,8 @@ export default function QuoteForm() {
           empresa: formData.empresa,
           telefono: formData.telefono,
           correo: formData.correo,
-          mensaje: formData.mensaje
+          mensaje: formData.mensaje,
+          source_id: 11
         })
       });
 
@@ -50,8 +51,8 @@ export default function QuoteForm() {
       }
 
       setSubmitted(true);
-      setFormData({ nombre: '', empresa: '', telefono: '', correo: '', mensaje: '' });
-      setTimeout(() => setSubmitted(false), 5000);
+      window.location.assign('confirmation');
+      return;
     } catch (err) {
       setError(err instanceof Error ? err.message : 'Error desconocido al enviar la solicitud.');
     } finally {

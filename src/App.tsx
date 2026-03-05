@@ -4,12 +4,19 @@ import Benefits from './components/Benefits';
 import Trust from './components/Trust';
 import Products from './components/Products';
 import QuoteForm from './components/QuoteForm';
+import ConfirmationPage from './components/ConfirmationPage';
 
 import Footer from './components/Footer';
 import TrainingGallery from './components/TrainingGallery';
 
 
 function App() {
+  const isConfirmationPage = /\/confirmation\/?$/.test(window.location.pathname);
+
+  if (isConfirmationPage) {
+    return <ConfirmationPage />;
+  }
+
   return (
     <div className="min-h-screen">
       <HeaderLead />

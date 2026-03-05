@@ -1,4 +1,5 @@
 import { MapPin, Phone, Mail, MessageCircle } from 'lucide-react';
+import { APP_VERSION } from '../version';
 
 export default function Footer() {
   return (
@@ -40,6 +41,9 @@ export default function Footer() {
           <p className="text-slate-400 text-xs text-center">
             © {new Date().getFullYear()} Eléctricas Bogotá Ltda. Todos los derechos reservados.
             Tus datos personales son tratados conforme a nuestra política de privacidad y la Ley 1581 de 2012.
+          </p>
+          <p className="mt-2 text-slate-500 text-[11px] text-center">
+            Versión publicada: {APP_VERSION}
           </p>
         </div>
       </div>
