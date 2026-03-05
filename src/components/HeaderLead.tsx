@@ -52,7 +52,7 @@ export default function HeaderLead() {
       }
 
       setSubmitted(true);
-      window.location.assign('confirmation');
+      window.location.assign('./confirmation.html');
       return;
     } catch (err) {
       setError(err instanceof Error ? err.message : 'Error desconocido al enviar la solicitud.');
