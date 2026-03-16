@@ -28,7 +28,7 @@ export default function ValueAdd() {
             <div className="bg-white rounded-lg p-5 shadow-sm text-left">
               <Building2 className="w-10 h-10 text-brand mb-3" />
               <h3 className="font-bold text-base mb-2 text-slate-900">
-                Más de 40 años de experiencia
+                Más de 43 años de experiencia
               </h3>
               <p className="text-slate-600 text-sm leading-relaxed">
                 Desde 1980 suministrando soluciones eléctricas e industriales a empresas

@@ -12,7 +12,7 @@ export default function ValueAdd() {
         <div className="grid md:grid-cols-3 gap-8">
           <div className="bg-white rounded-lg p-6 shadow-sm">
             <Building2 className="w-12 h-12 text-brand mb-4" />
-            <h3 className="font-bold text-lg mb-3 text-slate-900">Más de 40 años de experiencia</h3>
+            <h3 className="font-bold text-lg mb-3 text-slate-900">Más de 43 años de experiencia</h3>
             <p className="text-slate-600 text-sm leading-relaxed">
               Desde 1980 suministrando soluciones eléctricas e industriales a empresas colombianas. Trayectoria comprobada en el sector.
             </p>

@@ -1,4 +1,5 @@
 import HeaderLead from './components/HeaderLead';
+import DriveSelector from './components/DriveSelector';
 import { ProductBanner } from './components/ProductBanner';
 import Benefits from './components/Benefits';
 import Trust from './components/Trust';
@@ -11,7 +12,7 @@ import TrainingGallery from './components/TrainingGallery';
 
 
 function App() {
-  const isConfirmationPage = /\/confirmation\/?$/.test(window.location.pathname);
+  const isConfirmationPage = /\/confirmation(\.html)?\/?$/.test(window.location.pathname);
 
   if (isConfirmationPage) {
     return <ConfirmationPage />;
@@ -20,10 +21,11 @@ function App() {
   return (
     <div className="min-h-screen">
       <HeaderLead />
+      <DriveSelector />
+      <Products />
       <ProductBanner />
       <Benefits />
       <Trust />
-      <Products />
       <QuoteForm />
       <TrainingGallery />
       <Footer />

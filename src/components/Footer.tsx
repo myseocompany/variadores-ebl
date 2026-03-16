@@ -1,4 +1,4 @@
-import { MapPin, Phone, Mail, MessageCircle } from 'lucide-react';
+import { MapPin, Mail, MessageCircle } from 'lucide-react';
 import { APP_VERSION } from '../version';
 
 export default function Footer() {
@@ -24,14 +24,14 @@ export default function Footer() {
 
               <div className="flex items-center gap-3">
                 <MessageCircle className="w-5 h-5 text-brand flex-shrink-0" />
-                <a href="https://wa.me/573001234567" target="_blank" rel="noopener noreferrer" className="text-slate-300 text-sm hover:text-brand-light transition">
-                  WhatsApp: +57 300 123 4567
+                <a href="https://wa.me/573116672109" target="_blank" rel="noopener noreferrer" className="text-slate-300 text-sm hover:text-brand-light transition">
+                  WhatsApp: +57 311 667 2109
                 </a>
               </div>
               <div className="flex items-center gap-3">
                 <Mail className="w-5 h-5 text-brand flex-shrink-0" />
-                <a href="mailto:ventas@electricasbogota.com" className="text-slate-300 text-sm hover:text-brand-light transition">
-                  ventas@electricasbogota.com
+                <a href="mailto:mercadeo@electricasbogota.com" className="text-slate-300 text-sm hover:text-brand-light transition">
+                  mercadeo@electricasbogota.com
                 </a>
               </div>
             </div>

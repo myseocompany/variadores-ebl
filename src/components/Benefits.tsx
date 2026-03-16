@@ -3,8 +3,8 @@ import { Zap, Settings, Headphones, Truck } from 'lucide-react';
 const benefits = [
   {
     icon: Zap,
-    title: 'Ahorro energético hasta 30%',
-    description: 'Reduce costos operativos optimizando el consumo de tus motores eléctricos industriales.'
+    title: 'Ahorro energético, comparado con otras tecnologías hasta 30%',
+    description: 'Reduce costos operativos optimizando el consumo de tus motores eléctricos industriales frente a otras tecnologías.'
   },
   {
     icon: Settings,
@@ -14,7 +14,7 @@ const benefits = [
   {
     icon: Headphones,
     title: 'Soporte técnico certificado',
-    description: 'Asesoría especializada de ingenieros certificados Invertek con más de 40 años de experiencia.'
+    description: 'Soporte técnico especializado de Eléctricas Bogotá, con 43 años de experiencia en el sector.'
   },
   {
     icon: Truck,

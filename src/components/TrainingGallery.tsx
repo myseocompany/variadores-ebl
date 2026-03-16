@@ -12,16 +12,6 @@ export default function TrainingGallery() {
     { id: "cM2fOCdKBeM", title: "Configuración de variador con potenciómetro | Tutorial" },
     { id: "y-Az1bHh_RU", title: "Configuración de variador con Start/Stop | Tutorial" },
     { id: "yQRInw0odAI", title: "Configuración de reinicio automático de un variador | Tutorial" },
-    { id: "BEh1UDvylR8", title: "Variador Invertek: control ideal para sistemas de elevación" },
-    { id: "ayrqaT44JDk", title: "Comunicación Modbus RTU entre PLC Xinje y variador (Parte 1)" },
-    { id: "gjDjE7k9Pak", title: "Comunicación Modbus RTU entre PLC Xinje y variador (Parte 2)" },
-    { id: "IF8qssuZZLQ", title: "Selección de velocidades fijas en un variador | Tutorial" },
-    { id: "E7wAuYWzZXo", title: "Modo Standby/Hibernación en un variador | Tutorial" },
-    { id: "ewRQbcCf5eE", title: "Variadores para aplicaciones solares en sistemas de bombeo" },
-    { id: "O8ieJyWXwk4", title: "Variadores de frecuencia especializados en bombeo" },
-    { id: "r18rcLZta7c", title: "Variadores de velocidad para sistemas de bombeo | Optidrive ECO" },
-    { id: "1iNLZ39hZ5I", title: "Variadores de frecuencia IP66 / NEMA 4X | Protección avanzada" },
-    { id: "4e6Sms3-ry0", title: "Genialidades de los variadores de frecuencia | Capacitación técnica" },
   ];
 
   // 👇 Se especifica el tipo del estado explícitamente

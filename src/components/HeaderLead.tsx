@@ -1,11 +1,11 @@
 import { useState, ChangeEvent, FormEvent } from 'react';
 import { Send, CheckCircle } from 'lucide-react';
+import { buildConfirmationUrl, buildCrmTrackingPayload, getTrackingParams } from '../utils/tracking';
 
 export default function HeaderLead() {
   const [formData, setFormData] = useState({
     nombre: '',
-    telefono: '',
-    correo: ''
+    telefono: ''
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitted, setSubmitted] = useState(false);
@@ -31,6 +31,9 @@ export default function HeaderLead() {
     setIsSubmitting(true);
 
     try {
+      const trackingParams = getTrackingParams();
+      const trackingPayload = buildCrmTrackingPayload(trackingParams);
+
       const response = await fetch(leadsEndpoint, {
         method: 'POST',
         headers: {
@@ -40,9 +43,10 @@ export default function HeaderLead() {
         body: JSON.stringify({
           nombre: formData.nombre,
           telefono: formData.telefono,
-          correo: formData.correo,
+          ...trackingPayload,
           origen: 'cta_superior',
-          source_id: 11
+          source_id: 7,
+          project_id: 3
         })
       });
 
@@ -52,7 +56,7 @@ export default function HeaderLead() {
       }
 
       setSubmitted(true);
-      window.location.assign('./confirmation.html');
+      window.location.assign(buildConfirmationUrl(import.meta.env.BASE_URL, trackingParams));
       return;
     } catch (err) {
       setError(err instanceof Error ? err.message : 'Error desconocido al enviar la solicitud.');
@@ -66,12 +70,20 @@ export default function HeaderLead() {
       {/* Logo superior */}
       <div className="bg-white">
         <div className="max-w-6xl mx-auto px-6 py-4">
-          <img
-            src="https://www.invertekdrives.com/img/common/logos/optidrive.svg"
-            alt="Optidrive"
-            className="h-14 w-auto mb-4 sm:mb-0"
-            loading="lazy"
-          />
+          <div className="flex items-center justify-between gap-3 sm:gap-6 flex-nowrap">
+            <img
+              src={`${import.meta.env.BASE_URL}img/logo-electricas-bogota.png`}
+              alt="Eléctricas Bogotá"
+              className="h-auto w-[42%] max-w-[180px] sm:w-auto sm:h-12 shrink-0"
+              loading="lazy"
+            />
+            <img
+              src="https://www.invertekdrives.com/img/common/logos/optidrive.svg"
+              alt="Optidrive"
+              className="h-auto w-[52%] max-w-[220px] sm:w-auto sm:h-14 shrink-0"
+              loading="lazy"
+            />
+          </div>
         </div>
       </div>
 
@@ -83,15 +95,33 @@ export default function HeaderLead() {
           {/* Texto principal */}
           <div className="flex-1">
             <h1 className="text-4xl md:text-5xl font-bold leading-tight mb-6">
-              Variadores de Frecuencia Trifásicos y Monofásicos Invertek Optidrive E3, P2, ECO y Elevator.
+              Variadores de Frecuencia Invertek Optidrive
             </h1>
             <h2 className="text-lg font-medium mb-4 text-brand-soft">
-              Compra tu variador de frecuencia Invertek Optidrive en Colombia
+              Trifásicos y monofásicos – modelos E3, P2, ECO y Elevator
             </h2>
-            <p className="text-xl text-slate-300 mb-8 max-w-2xl">
-              Control preciso de motores trifásicos y monofásicos. Variadores de frecuencia e inversores Optidrive
-              con eficiencia energética hasta un 30%.
+            <p className="text-xl text-slate-300 mb-6 max-w-2xl">
+              Compra variadores de frecuencia Invertek Optidrive en Colombia con soporte técnico especializado de
+              Electricas Bogotá.
             </p>
+            <ul className="text-lg text-slate-300 mb-8 space-y-3 max-w-xl">
+              <li className="flex items-start gap-3">
+                <span className="mt-2 inline-block h-2.5 w-2.5 rounded-full bg-[#FF5100] shrink-0"></span>
+                <span>Entrega inmediata en Colombia</span>
+              </li>
+              <li className="flex items-start gap-3">
+                <span className="mt-2 inline-block h-2.5 w-2.5 rounded-full bg-[#FF5100] shrink-0"></span>
+                <span>Asesoría técnica especializada</span>
+              </li>
+              <li className="flex items-start gap-3">
+                <span className="mt-2 inline-block h-2.5 w-2.5 rounded-full bg-[#FF5100] shrink-0"></span>
+                <span>Control preciso para motores industriales</span>
+              </li>
+              <li className="flex items-start gap-3">
+                <span className="mt-2 inline-block h-2.5 w-2.5 rounded-full bg-[#FF5100] shrink-0"></span>
+                <span>Ahorro energético, comparado con otras tecnologías hasta 30%</span>
+              </li>
+            </ul>
           </div>
 
           {/* Formulario */}
@@ -139,21 +169,6 @@ export default function HeaderLead() {
                     />
                   </div>
 
-                  <div>
-                    <label htmlFor="correo" className="block text-sm font-medium text-slate-100 mb-1">
-                      Correo electrónico
-                    </label>
-                    <input
-                      type="email"
-                      id="correo"
-                      name="correo"
-                      value={formData.correo}
-                      onChange={handleChange}
-                      className="w-full rounded-lg border border-white/20 bg-white px-4 py-3 text-slate-900 outline-none transition focus:border-transparent focus:ring-2 focus:ring-brand"
-                      placeholder="contacto@empresa.com"
-                    />
-                  </div>
-
                   {error && (
                     <p className="rounded-lg border border-red-300 bg-red-100/90 px-4 py-3 text-sm text-red-800">
                       {error}
@@ -163,13 +178,29 @@ export default function HeaderLead() {
                   <button
                     type="submit"
                     disabled={isSubmitting}
-                    className="inline-flex w-full items-center justify-center gap-2 rounded-lg bg-black px-6 py-3 font-semibold text-white transition hover:bg-brand-dark disabled:cursor-not-allowed disabled:bg-brand/60"
+                    className="inline-flex w-full items-center justify-center gap-2 rounded-lg bg-[#FF5100] px-6 py-3 font-semibold text-white transition hover:bg-[#e64a00] disabled:cursor-not-allowed disabled:bg-[#FF5100]/60"
                   >
                     <Send size={18} />
-                    {isSubmitting ? 'Enviando...' : 'Cotizar variador de frecuencia Invertek'}
+                    {isSubmitting ? 'Enviando...' : 'Cotizar variador'}
                   </button>
                 </form>
               )}
+            </div>
+            <div className="mt-4 px-1">
+              <ul className="space-y-1.5 text-xs text-slate-200/75">
+                <li className="flex items-start gap-2">
+                  <span className="mt-0.5 text-[11px] text-[#FF5100]/80">✔</span>
+                  <span>Distribuidor especializado Invertek en Colombia</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <span className="mt-0.5 text-[11px] text-[#FF5100]/80">✔</span>
+                  <span>Más de 40 años en automatización industrial</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <span className="mt-0.5 text-[11px] text-[#FF5100]/80">✔</span>
+                  <span>Soporte técnico certificado</span>
+                </li>
+              </ul>
             </div>
           </div>
         </div>

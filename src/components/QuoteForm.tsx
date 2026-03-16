@@ -1,12 +1,12 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Send, CheckCircle } from 'lucide-react';
+import { buildConfirmationUrl, buildCrmTrackingPayload, getTrackingParams } from '../utils/tracking';
+import { QUOTE_PREFILL_EVENT, type QuotePrefillDetail } from '../utils/quotePrefill';
 
 export default function QuoteForm() {
   const [formData, setFormData] = useState({
     nombre: '',
-    empresa: '',
     telefono: '',
-    correo: '',
     mensaje: ''
   });
   const [submitted, setSubmitted] = useState(false);
@@ -14,6 +14,33 @@ export default function QuoteForm() {
   const [error, setError] = useState<string | null>(null);
 
   const leadsEndpoint = import.meta.env.VITE_CRM_LEADS_ENDPOINT as string | undefined;
+
+  useEffect(() => {
+    const handlePrefill = (event: Event) => {
+      const customEvent = event as CustomEvent<QuotePrefillDetail>;
+      const prefilledMessage = customEvent.detail?.message;
+
+      if (!prefilledMessage) {
+        return;
+      }
+
+      setFormData((current) => ({
+        ...current,
+        mensaje: current.mensaje.includes(prefilledMessage)
+          ? current.mensaje
+          : current.mensaje.trim()
+            ? `${current.mensaje.trim()}\n\n${prefilledMessage}`
+            : prefilledMessage
+      }));
+
+      window.setTimeout(() => {
+        document.getElementById('mensaje')?.focus();
+      }, 250);
+    };
+
+    window.addEventListener(QUOTE_PREFILL_EVENT, handlePrefill as EventListener);
+    return () => window.removeEventListener(QUOTE_PREFILL_EVENT, handlePrefill as EventListener);
+  }, []);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -29,6 +56,9 @@ export default function QuoteForm() {
     setIsSubmitting(true);
 
     try {
+      const trackingParams = getTrackingParams();
+      const trackingPayload = buildCrmTrackingPayload(trackingParams);
+
       const response = await fetch(leadsEndpoint, {
         method: 'POST',
         headers: {
@@ -37,11 +67,11 @@ export default function QuoteForm() {
         },
         body: JSON.stringify({
           nombre: formData.nombre,
-          empresa: formData.empresa,
           telefono: formData.telefono,
-          correo: formData.correo,
           mensaje: formData.mensaje,
-          source_id: 11
+          ...trackingPayload,
+          source_id: 7,
+          project_id: 3
         })
       });
 
@@ -51,7 +81,7 @@ export default function QuoteForm() {
       }
 
       setSubmitted(true);
-      window.location.assign('./confirmation.html');
+      window.location.assign(buildConfirmationUrl(import.meta.env.BASE_URL, trackingParams));
       return;
     } catch (err) {
       setError(err instanceof Error ? err.message : 'Error desconocido al enviar la solicitud.');
@@ -108,24 +138,6 @@ export default function QuoteForm() {
                 />
               </div>
               <div>
-                <label htmlFor="empresa" className="block text-sm font-medium text-slate-700 mb-2">
-                  Empresa *
-                </label>
-                <input
-                  type="text"
-                  id="empresa"
-                  name="empresa"
-                  required
-                  value={formData.empresa}
-                  onChange={handleChange}
-                  className="w-full px-4 py-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-brand focus:border-transparent outline-none transition"
-                  placeholder="Industrias S.A."
-                />
-              </div>
-            </div>
-
-            <div className="grid md:grid-cols-2 gap-6 mb-6">
-              <div>
                 <label htmlFor="telefono" className="block text-sm font-medium text-slate-700 mb-2">
                   Teléfono / WhatsApp *
                 </label>
@@ -140,26 +152,11 @@ export default function QuoteForm() {
                   placeholder="+57 300 123 4567"
                 />
               </div>
-              <div>
-                <label htmlFor="correo" className="block text-sm font-medium text-slate-700 mb-2">
-                  Correo electrónico *
-                </label>
-                <input
-                  type="email"
-                  id="correo"
-                  name="correo"
-                  required
-                  value={formData.correo}
-                  onChange={handleChange}
-                  className="w-full px-4 py-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-brand focus:border-transparent outline-none transition"
-                  placeholder="correo@empresa.com"
-                />
-              </div>
             </div>
 
             <div className="mb-6">
               <label htmlFor="mensaje" className="block text-sm font-medium text-slate-700 mb-2">
-                Cuéntanos sobre tu proyecto
+                Cuéntamos...
               </label>
               <textarea
                 id="mensaje"
@@ -175,10 +172,10 @@ export default function QuoteForm() {
             <button
               type="submit"
               disabled={isSubmitting}
-              className="w-full bg-black hover:bg-brand-dark disabled:bg-brand/60 disabled:cursor-not-allowed text-white font-semibold px-8 py-4 rounded-lg text-lg transition-colors inline-flex items-center justify-center gap-2"
+              className="inline-flex w-full items-center justify-center gap-2 rounded-lg bg-[#FF5100] px-6 py-3 font-semibold text-white transition hover:bg-[#e64a00] disabled:cursor-not-allowed disabled:bg-[#FF5100]/60"
             >
-              <Send size={20} />
-              {isSubmitting ? 'Enviando...' : 'Solicitar precio de variador Optidrive'}
+              <Send size={18} />
+              {isSubmitting ? 'Enviando...' : 'Cotizar variador'}
             </button>
 
             <p className="text-xs text-slate-500 mt-4 text-center">
